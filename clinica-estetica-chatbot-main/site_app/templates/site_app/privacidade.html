@@ -1,0 +1,96 @@
+{% extends "site_app/base.html" %}
+
+{% block title %}Política de Privacidade — Silvia Ribeiro Estética Avançada{% endblock %}
+{% block description %}Saiba como a Silvia Ribeiro Estética Avançada coleta, usa e protege os seus dados pessoais, conforme a LGPD.{% endblock %}
+
+{% block content %}
+<section class="pagina-topo">
+  <div class="container">
+    <p class="detalhe">transparência e cuidado</p>
+    <h1>Política de Privacidade</h1>
+  </div>
+</section>
+
+<section class="secao">
+  <div class="container">
+    <article class="politica">
+      <p class="politica__atualizado">Última atualização: 20 de outubro de 2026</p>
+
+      <p>A <strong>Silvia Ribeiro Estética Avançada</strong> respeita a sua privacidade. Esta política explica quais dados pessoais coletamos neste site, para que os usamos, com quem os compartilhamos e quais são os seus direitos, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD).</p>
+
+      <h2>1. Quem é o responsável pelos seus dados</h2>
+      <p>O responsável pelo tratamento dos dados (controlador) é:</p>
+      <ul>
+        <li><strong>Silvia Ribeiro Estética Avançada</strong> — Dra. Silvia Ribeiro</li>
+        <li>Endereço: {{ contato.endereco }}</li>
+        <li>Telefone / WhatsApp: {{ contato.telefone }}</li>
+        <li>E-mail: <a href="mailto:{{ contato.email }}">{{ contato.email }}</a></li>
+      </ul>
+
+      <h2>2. Quais dados coletamos</h2>
+      <p>Coletamos apenas o que você nos informa ao usar o site:</p>
+      <ul>
+        <li><strong>Agendamento e formulário de contato:</strong> nome, telefone/WhatsApp, tratamento de interesse, dia e horário desejados, período preferido e a mensagem que você escrever.</li>
+        <li><strong>Conversas pelo WhatsApp:</strong> os dados que você enviar na conversa com a nossa equipe.</li>
+        <li><strong>Dados de navegação:</strong> informações técnicas como endereço IP, tipo de navegador e páginas acessadas, registradas automaticamente pelos servidores que hospedam o site.</li>
+      </ul>
+      <p>Não pedimos documentos, dados de pagamento ou informações de saúde pelo site. Dados de saúde necessários ao atendimento (como histórico e avaliação) são coletados presencialmente, na consulta, com o seu consentimento específico.</p>
+
+      <h2>3. Para que usamos os seus dados</h2>
+      <ul>
+        <li>Responder às suas mensagens e dúvidas;</li>
+        <li>Organizar, confirmar ou remarcar o seu agendamento;</li>
+        <li>Indicar tratamentos de acordo com o seu interesse;</li>
+        <li>Garantir o funcionamento e a segurança do site.</li>
+      </ul>
+      <p>As bases legais utilizadas são o seu consentimento, a execução de procedimentos preliminares a um contrato (o agendamento) e o legítimo interesse, quando aplicável.</p>
+
+      <h2>4. Como funciona o envio pelo WhatsApp</h2>
+      <p>Ao clicar em "Enviar pelo WhatsApp" ou em "Solicitar agendamento", o site abre o aplicativo ou a versão web do WhatsApp com uma mensagem pronta contendo os dados que você preencheu. O envio só acontece quando <strong>você</strong> confirma a mensagem no WhatsApp. A partir daí, o tratamento dessas informações também segue as regras e a política de privacidade do próprio WhatsApp.</p>
+
+      <h2>5. Compartilhamento de dados</h2>
+      <p>Não vendemos nem cedemos os seus dados a terceiros para fins de publicidade. Eles podem ser compartilhados apenas:</p>
+      <ul>
+        <li>Com prestadores de serviço essenciais ao site (hospedagem e envio de mensagens), que seguem as nossas instruções;</li>
+        <li>Quando houver obrigação legal ou determinação de autoridade competente.</li>
+      </ul>
+
+      <h2>6. Serviços de terceiros usados no site</h2>
+      <ul>
+        <li><strong>Google Fonts:</strong> carrega as fontes das páginas e pode receber o seu endereço IP;</li>
+        <li><strong>OpenStreetMap:</strong> exibe o mapa da nossa localização e pode receber o seu endereço IP;</li>
+        <li><strong>WhatsApp e Instagram:</strong> ao clicar nesses links, você passa a navegar nos serviços deles, com políticas próprias.</li>
+      </ul>
+
+      <h2>7. Cookies</h2>
+      <p>Este site não usa cookies de publicidade nem de rastreamento para fins de marketing. Se isso mudar, atualizaremos esta política e informaremos você.</p>
+
+      <h2>8. Por quanto tempo guardamos os dados</h2>
+      <p>Mantemos os seus dados pelo tempo necessário para atender à finalidade para a qual foram coletados e para cumprir obrigações legais. Depois disso, eles são excluídos ou anonimizados.</p>
+
+      <h2>9. Os seus direitos</h2>
+      <p>Você pode, a qualquer momento, solicitar:</p>
+      <ul>
+        <li>Confirmação de que tratamos os seus dados e acesso a eles;</li>
+        <li>Correção de dados incompletos, inexatos ou desatualizados;</li>
+        <li>Anonimização, bloqueio ou eliminação de dados desnecessários;</li>
+        <li>Portabilidade dos dados;</li>
+        <li>Informação sobre com quem os compartilhamos;</li>
+        <li>Revogação do consentimento, quando o tratamento se basear nele.</li>
+      </ul>
+      <p>Para exercer esses direitos, escreva para <a href="mailto:{{ contato.email }}">{{ contato.email }}</a> ou fale conosco pelo <a href="{{ contato.whatsapp }}" target="_blank" rel="noopener noreferrer">WhatsApp</a>. Você também pode apresentar reclamação à Autoridade Nacional de Proteção de Dados (ANPD).</p>
+
+      <h2>10. Segurança</h2>
+      <p>Adotamos medidas técnicas e organizacionais para proteger os seus dados contra acessos não autorizados, perda ou uso indevido. Nenhum sistema é totalmente imune a riscos, mas trabalhamos para reduzi-los ao mínimo.</p>
+
+      <h2>11. Alterações nesta política</h2>
+      <p>Podemos atualizar esta política para refletir mudanças no site ou na lei. A data da última atualização está sempre indicada no topo desta página.</p>
+
+      <h2>12. Contato</h2>
+      <p>Dúvidas sobre esta política? Fale com a gente pelo e-mail <a href="mailto:{{ contato.email }}">{{ contato.email }}</a> ou pelo telefone {{ contato.telefone }}.</p>
+
+      <p class="politica__aviso">Este texto é um modelo baseado na LGPD e nas funcionalidades atuais do site. Recomendamos que um profissional de direito revise o conteúdo (e inclua o CNPJ, se houver) antes da publicação.</p>
+    </article>
+  </div>
+</section>
+{% endblock %}

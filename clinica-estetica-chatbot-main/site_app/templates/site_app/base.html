@@ -1,0 +1,277 @@
+<!-- Habilita a tag (static) para carregar CSS, JS e imagens #}-->
+{% load static %}
+<!--faz o carregamento da biblioteca de arquivos estáticos do Django-->
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% block title %}Silvia Ribeiro Estética Avançada {% endblock %}
+    </title>
+    <!--block title endBlock: Caso eu não mude o title de outras páginas
+  esse seria o title padrão em qualquer outra página-->
+    <meta
+      name="description"
+      content="{% block description %}Cuidado individualizado e tratamentos estéticos faciais, corporais e de rejuvenescimento com a Dra. Silvia Ribeiro.{% endblock %}"
+    />
+    <!--Texto que o google mostra embaixo do titulo do site no resultados de busca-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'site_app/css/style.css' %}" />
+    <!--static: faz com que gere o caminho até o css -->
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+    <!-- Recurso de acessibilidade, não aparece no site porque foi tirado 
+   visibilidade pelo CSS-->
+
+    <header class="header" id="header">
+      <div class="container header__inner">
+        <a
+          class="logo"
+          href="{% url 'site_app:home' %}"
+          aria-label="Silvia Ribeiro Estética Avançada — página inicial"
+        >
+          <!--Gera a URL pelo nome da rota e quando clico no logo volta para página home  -->
+          <span class="logo__monograma">SR</span>
+          <span class="logo__texto">
+            <span class="logo__nome">Silvia Ribeiro</span>
+            <span class="logo__sub">Estética Avançada</span>
+          </span>
+        </a>
+        {# ---- MENU DE NAVEGAÇÃO ---- #}
+        <nav class="nav" id="nav" aria-label="Menu principal">
+          <ul class="nav__lista">
+            <li>
+              <a
+                href="{% url 'site_app:home' %}"
+                {% if pagina == "home" %}aria-current="page"{% endif %}
+                >Início</a
+              >
+            </li>
+            <li><a href="{% url 'site_app:servicos' %}" {% if pagina == "servicos" %}aria-current="page"{% endif %}>Serviços</a></li>
+            <li>
+              <a
+                href="{% url 'site_app:sobre' %}"
+                {% if pagina == "sobre" %}aria-current="page"{% endif %}
+                >Quem Somos</a
+              >
+            </li>
+            <li><a href="{% url 'site_app:contato' %}" {% if pagina == "contato" %}aria-current="page"{% endif %}>Contatos</a></li>
+              
+          </ul>
+            {% if pagina != "sobre" and pagina != "contato" %}
+          <a
+            href="{% if pagina == 'home' or pagina == 'servicos' %}#agendamento{% else %}{% url 'site_app:home' %}#agendamento{% endif %}"
+            class="btn"
+          >
+            Agendar consulta
+          </a>
+          {% endif %}
+          <!-- todos os URL apontam para a rota correta-->
+        </nav>
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-expanded="false"
+          aria-controls="nav"
+          aria-label="Abrir menu"
+        >
+          <span></span><span></span><span></span>
+          <!-- Resposividade
+        Botão hambúrguer (celular). Os 3 span viram as 3 linhas do ícone 
+        aria-expanded: false = menu fechado (o JS troca para true ao abrir)
+        aria-controls: informa qual elemento o botão controla (id="nav")-->
+        </button>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <!--Aqui entra o conteúdo único de cada página filha -->
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer" id="contato">
+      <div class="container footer__grid">
+        <div class="footer__marca">
+          <span class="logo__monograma logo__monograma--claro">SR</span>
+          <p class="footer__nome">Silvia Ribeiro</p>
+          <p class="footer__sub">Estética Avançada</p>
+        </div>
+
+        <div>
+          <h3 class="footer__titulo">Onde nos encontrar</h3>
+          <ul class="footer__lista">
+            <li>{{ contato.endereco }}</li>
+            {% for dia, hora in contato.horarios %}
+            <li>{{ dia }}: {{ hora }}</li>
+            {% endfor %}
+          </ul>
+
+          <h3 class="footer__titulo footer__titulo--espaco">Entre em contato</h3>
+          <ul class="footer__lista">
+            <li><a href="{{ contato.whatsapp }}" target="_blank" rel="noopener noreferrer">{{ contato.telefone }}</a></li>
+            <li><a href="mailto:{{ contato.email }}">{{ contato.email }}</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__titulo">Navegue</h3>
+          <ul class="footer__lista footer__lista--links">
+            <li><a href="{% url 'site_app:home' %}">Início</a></li>
+            <li><a href="{% url 'site_app:servicos' %}">Serviços</a></li>
+            <li><a href="{% url 'site_app:sobre' %}">Quem Somos</a></li>
+            <li><a href="{% url 'site_app:contato' %}">Fale conosco</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__titulo">Informações</h3>
+          <ul class="footer__lista footer__lista--links">
+            <li><a href="{% url 'site_app:privacidade' %}">Política de Privacidade</a></li>
+            <li><a href="{{ contato.instagram }}" target="_blank" rel="noopener">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer__rodape">
+        <p>
+          &copy; {% now "Y" %} Silvia Ribeiro Estética Avançada. Todos os
+          direitos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <script src="{% static 'site_app/js/main.js' %}" defer></script>
+    <!-- defer: baixa sem travar a página e executa só depois que o HTML estiver pronto -->
+  </body>
+ <!-- CHATBOT FLUTUANTE -->
+ 
+
+
+<!-- 1. O botão flutuante que fica no canto da tela -->
+<button id="chat-btn" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; background-color: #d81b60; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 24px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+    💬
+</button>
+
+<!-- 2. A janela do chat (escondida por padrão: display: none) -->
+<div id="chat-window" style="display: none; position: fixed; bottom: 90px; right: 20px; z-index: 1000; width: 350px; height: 450px; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: flex; flex-direction: column; overflow: hidden;">
+    
+    <!-- Cabeçalho do Chat -->
+    <div style="background-color: #d81b60; color: white; padding: 15px; font-weight: bold; text-align: center;">
+        SR Estética Avançada
+        <span id="close-chat" style="float: right; cursor: pointer;">✖</span>
+    </div>
+
+    <!-- Área onde as mensagens vão aparecer -->
+    <div id="chat-messages" style="flex: 1; padding: 15px; overflow-y: auto; background-color: #f9f9f9; display: flex; flex-direction: column; gap: 10px;">
+        <!-- Mensagem de boas-vindas fixa -->
+        <div style="background: #e1bee7; padding: 10px; border-radius: 10px; align-self: flex-start; max-width: 80%;">
+            Olá! Sou a assistente virtual da SR Estética. Como posso ajudar?
+        </div>
+    </div>
+
+    <!-- Área de digitação e botão de envio -->
+    <div style="padding: 10px; background: white; border-top: 1px solid #ccc; display: flex;">
+        <!-- Token de segurança obrigatório do Django (CSRF) -->
+        {% csrf_token %}
+        <input type="text" id="chat-input" placeholder="Digite sua mensagem..." style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline: none;">
+        <button id="chat-send" style="margin-left: 10px; background: #d81b60; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">Enviar</button>
+    </div>
+</div>
+
+<!-- 3. A inteligência do frontend (JavaScript) -->
+<script>
+    // Selecionando os elementos HTML
+    const chatBtn = document.getElementById('chat-btn');
+    const chatWindow = document.getElementById('chat-window');
+    const closeChat = document.getElementById('close-chat');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const chatMessages = document.getElementById('chat-messages');
+
+    // Função para abrir e fechar a janela do chat
+    chatBtn.addEventListener('click', () => {
+        chatWindow.style.display = chatWindow.style.display === 'none' ? 'flex' : 'none';
+    });
+    closeChat.addEventListener('click', () => chatWindow.style.display = 'none');
+
+    // Função para adicionar uma mensagem (do usuário ou do bot) na tela
+    function addMessage(text, isUser) {
+        const msgDiv = document.createElement('div');
+        msgDiv.style.padding = '10px';
+        msgDiv.style.borderRadius = '10px';
+        msgDiv.style.maxWidth = '80%';
+        msgDiv.style.wordWrap = 'break-word';
+        msgDiv.style.marginBottom = '10px';
+        
+        if (isUser) { // Estilo da mensagem do Usuário
+            msgDiv.style.background = '#d81b60';
+            msgDiv.style.color = 'white';
+            msgDiv.style.alignSelf = 'flex-end';
+        } else { // Estilo da mensagem do Chatbot
+            msgDiv.style.background = '#e1bee7';
+            msgDiv.style.color = 'black';
+            msgDiv.style.alignSelf = 'flex-start';
+        }
+        
+        msgDiv.innerText = text;
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Rola para o final
+    }
+
+    // Função que envia a mensagem para o Backend (Views do Django)
+    async function sendMessage() {
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        // 1. Mostra a mensagem do usuário na tela
+        addMessage(text, true);
+        chatInput.value = '';
+
+        // 2. Captura o Token CSRF de segurança gerado pela tag {% csrf_token %}
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        try {
+            // 3. Faz o POST para a rota do Django que o seu colega criou
+            const response = await fetch('/chatbot/mensagem/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken // Passando a segurança exigida pelo Django
+                },
+                body: JSON.stringify({ mensagem: text })
+            });
+
+            const data = await response.json();
+            
+            // 4. Mostra a resposta do Bot na tela
+            if(data.resposta) {
+                addMessage(data.resposta, false);
+            } else {
+                addMessage("Erro: Resposta não compreendida.", false);
+            }
+
+        } catch (error) {
+            console.error("Erro na comunicação:", error);
+            addMessage("Desculpe, o sistema está fora do ar.", false);
+        }
+    }
+
+    // Dispara o envio ao clicar no botão ou apertar a tecla "Enter"
+    chatSend.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') sendMessage();
+    });
+    
+    // Garante que o chat comece escondido
+    chatWindow.style.display = 'none';
+</script>
+
+</html>

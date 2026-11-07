@@ -1,0 +1,78 @@
+{% extends "site_app/base.html" %}
+
+{% block title %}Contato — Silvia Ribeiro Estética Avançada{% endblock %}
+{% block description %}Agende sua consulta na Silvia Ribeiro Estética Avançada pelo WhatsApp ou pelo formulário.{% endblock %}
+
+{% block content %}
+<section class="pagina-topo">
+  <div class="container">
+    <p class="detalhe">vamos cuidar de você</p>
+    <h1>Agende sua consulta</h1>
+    <p class="secao__intro">Escolha o canal que for mais prático. A equipe responde para combinar o melhor horário e indicar o tratamento ideal.</p>
+  </div>
+</section>
+
+<section class="secao">
+  <div class="container contato">
+
+    <div class="contato__canais">
+      <article class="contato__wa">
+        <p class="rotulo">Resposta mais rápida</p>
+        <h2>Fale pelo WhatsApp</h2>
+        <p>Envie uma mensagem para tirar dúvidas, ver horários ou agendar a sua avaliação.</p>
+        <a class="btn btn--claro" href="{{ contato.whatsapp }}" target="_blank" rel="noopener noreferrer">Abrir conversa</a>
+        <p class="contato__dica">Atendimento com hora marcada.</p>
+      </article>
+
+      <dl class="contato__info">
+        <div>
+          <dt>Endereço</dt>
+          <dd>{{ contato.endereco }}</dd>
+        </div>
+        <div>
+          <dt>Horário de atendimento</dt>
+          <dd>{% for dia, hora in contato.horarios %}{{ dia }}: {{ hora }}{% if not forloop.last %}<br>{% endif %}{% endfor %}</dd>
+        </div>
+        <div>
+          <dt>Telefone e e-mail</dt>
+          <dd>{{ contato.telefone }}<br><a href="mailto:{{ contato.email }}">{{ contato.email }}</a></dd>
+        </div>
+        <div>
+          <dt>Redes sociais</dt>
+          <dd>
+            <div class="contato__social">
+              <a href="{{ contato.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10a4 4 0 014 4v10a4 4 0 01-4 4H7a4 4 0 01-4-4V7a4 4 0 014-4zm0 2a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2zm5 3a4 4 0 110 8 4 4 0 010-8zm0 2a2 2 0 100 4 2 2 0 000-4zm4.8-3.3a1 1 0 110 2 1 1 0 010-2z"/></svg>
+              </a>
+              <a href="{{ contato.whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20.5l1.5-4.6A8 8 0 1121 12z"/><path d="M9 9.5c.3 2.2 2.300 4.200 5.500 5l1.200-1.300-1.800-1-.8.7c-.8-.4-1.500-1.100-1.900-1.900l.7-.8-1-1.800z"/></svg>
+              </a>
+            </div>
+          </dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="contato__foto">
+  {# Círculo com as iniciais (placeholder) #}
+  <div class="contato__foto-circulo" aria-hidden="true">SR</div>
+  {# Legenda do placeholder: apague ao colocar a foto real #}
+  <p class="contato__foto-legenda">Substitua por foto</p>
+</div>
+  </div>
+</section>
+
+<section class="secao secao--sobre">
+  <div class="container">
+    <header class="secao__cabecalho">
+      <p class="rotulo">Primeiro atendimento</p>
+      <h2>Como funciona</h2>
+    </header>
+    <ol class="passos">
+      <li class="card"><h3>Você entra em contato</h3><p>Pelo WhatsApp ou pelo formulário, com o tratamento que desperta seu interesse.</p></li>
+      <li class="card"><h3>Agendamos a avaliação</h3><p>A equipe confirma o dia e o horário que combinam com a sua rotina.</p></li>
+      <li class="card"><h3>Você recebe um plano</h3><p>Na avaliação, a Dra. Silvia indica os protocolos adequados ao seu caso.</p></li>
+    </ol>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,59 @@
+<section class="secao" id="agendamento">
+  <div class="container">
+    <header class="secao__cabecalho">
+      <p class="rotulo">Agendamento</p>
+      <h2>Reserve o seu horário</h2>
+      <p class="secao__intro">Escolha o dia e até 2 opções de horário. A confirmação final é feita pelo WhatsApp.</p>
+    </header>
+
+    <div class="agenda">
+      <!-- Calendário -->
+      <div class="cal">
+        <div class="cal__topo">
+          <button class="cal__nav" id="agPrev" type="button" aria-label="Mês anterior">
+            <svg width="10" height="18" viewBox="0 0 10 18" aria-hidden="true"><path d="M9 1 1 9l8 8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          </button>
+          <h3 class="cal__mes" id="agMes" aria-live="polite"></h3>
+          <button class="cal__nav" id="agNext" type="button" aria-label="Próximo mês">
+            <svg width="10" height="18" viewBox="0 0 10 18" aria-hidden="true"><path d="m1 1 8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          </button>
+        </div>
+        <div class="cal__grade" id="agGrade" role="group" aria-label="Escolha o dia" data-whatsapp="{{ whatsapp_numero }}"></div>
+        <p class="agenda__fuso">Fuso horário: {{ agenda.fuso }}</p>
+      </div>
+
+      <!-- Horários e envio -->
+      <div class="agenda__lado">
+        <h3 class="agenda__data" id="agData" aria-live="polite"></h3>
+        <div class="horarios" id="agHoras" role="group" aria-label="Horários disponíveis"></div>
+        <button class="agenda__mais" id="agMais" type="button" hidden>Mostrar mais horários</button>
+        <p class="agenda__resumo" id="agResumo" aria-live="polite"></p>
+
+        <label class="campo__rotulo" for="agNome">Seu nome</label>
+        <input class="campo" id="agNome" type="text" autocomplete="name" placeholder="Como podemos te chamar?">
+
+        <label class="campo__rotulo" for="agTel">Telefone / WhatsApp</label>
+        <input class="campo" id="agTel" type="tel" autocomplete="tel" inputmode="tel" placeholder="(11) 99999-9999">
+
+        <label class="campo__rotulo" for="agTrat">Tratamento</label>
+        <select class="campo" id="agTrat">
+          <option value="uma avaliação">Ainda não sei, quero uma avaliação</option>
+          {% for cat in tratamentos %}
+          <optgroup label="{{ cat.rotulo }}">
+            {% for item in cat.itens %}
+            <option value="{{ item.nome }}">{{ item.nome }}</option>
+            {% endfor %}
+          </optgroup>
+          {% endfor %}
+        </select>
+
+        <button class="btn" id="agEnviar" type="button" disabled>Enviar pelo WhatsApp</button>
+      </div>
+    </div>
+
+    <noscript>
+      <p>Para agendar, fale conosco pelo <a href="{{ contato.whatsapp }}">WhatsApp</a>.</p>
+    </noscript>
+  </div>
+  {{ agenda|json_script:"agenda-config" }}
+</section>

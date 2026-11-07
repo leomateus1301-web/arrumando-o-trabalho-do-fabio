@@ -1,0 +1,156 @@
+[
+{
+  "model": "clinica.servico",
+  "pk": 1,
+  "fields": {
+    "nome": "limpeza de pele",
+    "descricao": "Remove impurezas e renova a pele do rosto.",
+    "preco": "200.00",
+    "duracao_minutos": 60
+  }
+},
+{
+  "model": "clinica.servico",
+  "pk": 2,
+  "fields": {
+    "nome": "Hidratação facial",
+    "descricao": "Reposição de água e nutrientes para uma pele macia, luminosa e iluminada.",
+    "preco": "250.00",
+    "duracao_minutos": 120
+  }
+},
+{
+  "model": "clinica.duvidasfrequente",
+  "pk": 1,
+  "fields": {
+    "pergunta": "Quem pode se beneficiar dos tratamentos da clínica?",
+    "resposta": "Nossos procedimentos são indicados para qualquer pessoa que busque realçar sua beleza natural, melhorar a harmonia facial ou cuidar da saúde da pele. Atendemos pacientes que desejam suavizar linhas de expressão, restaurar o volume labial, amenizar olheiras, definir o contorno do rosto ou tratar queixas estéticas específicas com foco em bem-estar e autoestima."
+  }
+},
+{
+  "model": "clinica.duvidasfrequente",
+  "pk": 2,
+  "fields": {
+    "pergunta": "Existe alguma contraindicação para os procedimentos estéticos?",
+    "resposta": "Sim, alguns procedimentos possuem contraindicações específicas, como gestação, fase de amamentação, infecções ativas no local da aplicação e determinadas doenças autoimunes. Por isso, realizamos uma avaliação prévia minuciosa para conhecer o seu histórico de saúde e assegurar que o procedimento seja feito com total segurança."
+  }
+},
+{
+  "model": "clinica.duvidasfrequente",
+  "pk": 3,
+  "fields": {
+    "pergunta": "Qual é a idade mínima para realizar procedimentos na clínica?",
+    "resposta": "A indicação depende sempre de uma avaliação clínica individual, respeitando o desenvolvimento anatômico de cada pessoa. Para pacientes menores de 18 anos, é obrigatório o consentimento formal e o acompanhamento presencial dos responsáveis legais."
+  }
+},
+{
+  "model": "clinica.duvidasfrequente",
+  "pk": 4,
+  "fields": {
+    "pergunta": "Qual é o valor dos procedimentos?",
+    "resposta": "O valor varia conforme o tipo de tratamento, os produtos selecionados e a quantidade necessária para o seu caso. Como cada rosto é único, os valores exatos são definidos durante a avaliação inicial com o especialista, onde você receberá um plano de tratamento personalizado e detalhado."
+  }
+},
+{
+  "model": "clinica.duvidasfrequente",
+  "pk": 5,
+  "fields": {
+    "pergunta": "Quais são as áreas mais comuns de tratamento?",
+    "resposta": "As queixas mais frequentes incluem rugas e linhas na testa, linhas entre as sobrancelhas (glabela), pés de galinha ao redor dos olhos e perda de volume nos lábios ou bochechas (maçãs do rosto). Também realizamos tratamentos específicos para contorno mandibular, queixo, pescoço e colo."
+  }
+},
+{
+  "model": "clinica.duvidasfrequente",
+  "pk": 6,
+  "fields": {
+    "pergunta": "Os procedimentos estéticos causam dor?",
+    "resposta": "A grande maioria dos pacientes relata apenas um leve incômodo, perfeitamente tolerável. Para proporcionar o máximo de conforto, utilizamos técnicas modernas de aplicação associadas a anestésicos tópicos potentes ou locais, garantindo uma experiência tranquila do início ao fim."
+  }
+},
+{
+  "model": "clinica.duvidasfrequente",
+  "pk": 7,
+  "fields": {
+    "pergunta": "Como posso agendar uma avaliação?",
+    "resposta": "O agendamento pode ser feito de forma rápida diretamente pelo nosso chatbot no site ou enviando uma mensagem no nosso WhatsApp oficial. Nossa equipe está pronta para encontrar o melhor dia e horário para você."
+  }
+},
+{
+  "model": "clinica.duvidasfrequente",
+  "pk": 8,
+  "fields": {
+    "pergunta": "Quais cuidados são recomendados após os tratamentos?",
+    "resposta": "Recomendamos evitar exposição solar direta, não praticar atividades físicas intensas nas primeiras 24 a 48 horas e manter a pele protegida com filtro solar e hidratação. Ao final de cada sessão, nossa equipe entrega um protocolo completo de cuidados pós-procedimento e permanece à disposição para acompanhar a sua recuperação."
+  }
+},
+{
+  "model": "clinica.horariofuncionamento",
+  "pk": 1,
+  "fields": {
+    "dia_semana": 0,
+    "abre": "06:00:00",
+    "fecha": "18:00:00",
+    "fechado": false
+  }
+},
+{
+  "model": "clinica.horariofuncionamento",
+  "pk": 2,
+  "fields": {
+    "dia_semana": 1,
+    "abre": "06:00:00",
+    "fecha": "18:00:00",
+    "fechado": false
+  }
+},
+{
+  "model": "clinica.horariofuncionamento",
+  "pk": 3,
+  "fields": {
+    "dia_semana": 2,
+    "abre": "06:00:00",
+    "fecha": "18:00:00",
+    "fechado": true
+  }
+},
+{
+  "model": "clinica.horariofuncionamento",
+  "pk": 4,
+  "fields": {
+    "dia_semana": 3,
+    "abre": "06:00:00",
+    "fecha": "18:00:00",
+    "fechado": false
+  }
+},
+{
+  "model": "clinica.horariofuncionamento",
+  "pk": 5,
+  "fields": {
+    "dia_semana": 4,
+    "abre": "06:00:00",
+    "fecha": "18:00:00",
+    "fechado": false
+  }
+},
+{
+  "model": "clinica.horariofuncionamento",
+  "pk": 6,
+  "fields": {
+    "dia_semana": 5,
+    "abre": "06:00:00",
+    "fecha": "17:00:00",
+    "fechado": false
+  }
+},
+{
+  "model": "clinica.horariofuncionamento",
+  "pk": 7,
+  "fields": {
+    "dia_semana": 6,
+    "abre": "06:00:00",
+    "fecha": "18:00:00",
+    "fechado": true
+  }
+}
+]

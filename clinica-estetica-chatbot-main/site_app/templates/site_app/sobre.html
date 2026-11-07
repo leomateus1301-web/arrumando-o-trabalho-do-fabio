@@ -1,0 +1,59 @@
+{% extends "site_app/base.html" %}
+{% load static %}
+
+{% block title %}Quem Somos — Silvia Ribeiro Estética Avançada{% endblock %}
+{% block description %}Conheça a Dra. Silvia Ribeiro, sua formação e a filosofia de cuidado individualizado do consultório.{% endblock %}
+
+{% block content %}
+<section class="pagina-topo">
+  <div class="container">
+    <p class="detalhe">nossa história</p>
+    <h1>Quem Somos</h1>
+  </div>
+</section>
+
+<section class="secao">
+  <div class="container sobre-detalhe">
+    <figure class="sobre-resumo__foto">
+      <img src="{% static 'site_app/img/dra-silvia.svg' %}" alt="Dra. Silvia Ribeiro (substitua por uma foto profissional)" width="440" height="540">
+    </figure>
+    <div class="sobre-detalhe__texto">
+      <h2>Dra. Silvia Ribeiro</h2>
+      <p>Aqui vai a apresentação da Dra. Silvia Ribeiro. Texto de exemplo: profissional dedicada à estética avançada, com atendimento próximo e baseado em avaliação individual.</p>
+      <p>Substitua este trecho pelo resumo real da trajetória e da filosofia do consultório.</p>
+
+      <h3>Formação</h3>
+      <ul class="lista-simples">
+        <li>Graduação: informe a instituição e o ano</li>
+        <li>Pós-graduação: informe a área e a instituição</li>
+        <li>Cursos e certificações: informe os principais</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="secao secao--sobre">
+  <div class="container">
+    <header class="secao__cabecalho">
+      <p class="rotulo">Filosofia</p>
+      <h2>Como trabalhamos</h2>
+    </header>
+    <div class="grid-cards grid-cards--tres">
+      <article class="card">
+        <h3>Escuta primeiro</h3>
+        <p>Toda avaliação começa com uma conversa sobre o que você deseja e o que incomoda.</p>
+      </article>
+      <article class="card">
+        <h3>Plano individual</h3>
+        <p>Nenhum protocolo é copiado. Cada plano considera sua pele, sua rotina e seu ritmo.</p>
+      </article>
+      <article class="card">
+        <h3>Resultado natural</h3>
+        <p>Técnica e segurança para realçar o que já é seu, sem exageros.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

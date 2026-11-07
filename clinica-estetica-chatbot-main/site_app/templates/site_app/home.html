@@ -1,0 +1,83 @@
+{% extends "site_app/base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__texto">
+      <p class="detalhe">cuidado que começa por você</p>
+      <p class="rotulo">Beleza · Cuidados · Bem-estar</p>
+      <h1>Estética avançada, pensada para a sua pele e o seu tempo</h1>
+      <p class="hero__lead">Avaliação individual, tratamentos faciais, corporais e de rejuvenescimento com a Dra. Silvia Ribeiro.</p>
+      <div class="hero__acoes">
+        <a class="btn" href="#agendamento">Agendar Consulta</a>
+        <a class="btn btn--linha" href="#tratamentos">Ver serviços</a>
+      </div>
+    </div>
+    <figure class="hero__imagem">
+      <img src="{% static 'site_app/img/hero.svg' %}" alt="Ambiente do consultório (substitua por uma foto em alta definição)" width="560" height="680">
+    </figure>
+  </div>
+</section>
+
+<section class="secao" id="tratamentos">
+  <div class="container">
+    <header class="secao__cabecalho">
+      <p class="rotulo">Tratamentos</p>
+      <h2>Escolha o cuidado ideal</h2>
+      <p class="secao__intro">Alguns dos nossos tratamentos mais procurados.</p>
+    </header>
+
+  
+
+    <div class="grid-cards grid-cards--quatro">
+      {% for item in destaques %}
+      <article class="card card--servico" data-categoria="{{ item.categoria }}">
+        <div class="card__icone" aria-hidden="true">{{ item.icone }}</div>
+        <p class="rotulo rotulo--card">{{ item.rotulo }}</p>
+        <h3>{{ item.nome }}</h3>
+        <p>{{ item.descricao }}</p>
+        {% if item.preco %}<p class="card__preco">R$ {{ item.preco }}</p>{% else %}<p class="card__preco card__preco--consulta">Valor na avaliação</p>{% endif %}
+        <button type="button" class="btn btn--linha card__agendar" data-servico="{{ item.nome }}">Agendar</button>
+      </article>
+      {% endfor %}
+    </div>
+
+    <p class="secao__mais"><a class="btn" href="{% url 'site_app:servicos' %}">Ver todos os serviços</a></p>
+  </div>
+</section>
+
+<section class="secao secao--sobre">
+  <div class="container sobre-resumo">
+    <figure class="sobre-resumo__foto">
+      <img src="{% static 'site_app/img/dra-silvia.svg' %}" alt="Dra. Silvia Ribeiro (substitua por uma foto profissional)" width="440" height="540">
+    </figure>
+    <div>
+      <p class="rotulo">Quem Somos</p>
+      <h2>Dra. Silvia Ribeiro</h2>
+      <p>Um consultório onde cada paciente é ouvido antes de qualquer procedimento. O objetivo é realçar o que já é seu, com técnica, segurança e resultados naturais.</p>
+      <a class="btn btn--linha" href="{% url 'site_app:sobre' %}">Conhecer a história</a>
+    </div>
+  </div>
+</section>
+
+{% include 'site_app/_agendamento.html' %}
+
+<section class="secao secao--sobre" id="localizacao">
+  <div class="container local">
+    <div class="local__info">
+      <p class="rotulo">Localização</p>
+      <h2>Como chegar</h2>
+      <p>{{ contato.endereco }}</p>
+      <p>
+        {% for dia, hora in contato.horarios %}{{ dia }}: {{ hora }}{% if not forloop.last %}<br>{% endif %}{% endfor %}
+      </p>
+      <a class="btn btn--linha" href="{{ contato.mapa_link }}" target="_blank" rel="noopener">Abrir no Google Maps</a>
+    </div>
+    <div class="local__mapa">
+      <iframe title="Mapa com a localização do consultório" src="{{ contato.mapa_src }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

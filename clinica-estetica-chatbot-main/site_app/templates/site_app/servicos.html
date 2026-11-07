@@ -1,0 +1,46 @@
+{% extends "site_app/base.html" %}
+
+{% block title %}Serviços — Silvia Ribeiro Estética Avançada{% endblock %}
+{% block description %}Conheça todos os tratamentos faciais, corporais e de rejuvenescimento da Dra. Silvia Ribeiro.{% endblock %}
+
+{% block content %}
+<section class="pagina-topo">
+  <div class="container">
+    <p class="detalhe">cuidado completo</p>
+    <h1>Nossos Serviços</h1>
+  </div>
+</section>
+
+{% for cat in tratamentos %}
+<section class="secao{% if forloop.counter|divisibleby:2 %} secao--sobre{% endif %}" id="{{ cat.categoria }}">
+  <div class="container">
+    <header class="secao__cabecalho">
+      <p class="rotulo">Tratamentos</p>
+      <h2>{{ cat.rotulo }}</h2>
+    </header>
+    <div class="grid-cards grid-cards--quatro">
+      {% for item in cat.itens %}
+      <article class="card card--servico">
+        <div class="card__icone" aria-hidden="true">{{ item.icone }}</div>
+        <p class="rotulo rotulo--card">{{ cat.rotulo }}</p>
+        <h3>{{ item.nome }}</h3>
+        <p>{{ item.descricao }}</p>
+        {% if item.preco %}<p class="card__preco">R$ {{ item.preco }}</p>{% else %}<p class="card__preco card__preco--consulta">Valor na avaliação</p>{% endif %}
+        <button type="button" class="btn btn--linha card__agendar" data-servico="{{ item.nome }}">Agendar</button>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endfor %}
+
+{% include 'site_app/_agendamento.html' %}
+
+<section class="chamada">
+  <div class="container chamada__inner">
+    <h2>Não sabe qual escolher?</h2>
+    <p>Agende uma avaliação e montamos o plano ideal para a sua pele.</p>
+    <a class="btn btn--claro" href="#agendamento">Agendar avaliação</a>
+  </div>
+</section>
+{% endblock %}
